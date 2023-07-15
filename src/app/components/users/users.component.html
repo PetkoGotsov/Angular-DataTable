@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="update()">
+                <table datatable [dtOptions]="dtOptions" class="table table-bordered">
+                    <tbody>
+                        <ng-container *ngFor="let user of allUsers; let i = index">
+                            <tr *ngIf="userSelected != user" (click)="selectUser(user)">
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.phone }}</td>
+                            </tr>
+
+                            <tr *ngIf="userSelected == user" class="table-primary">
+                                <td>{{ user.id }}</td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="name"
+                                        [value]="user.name" title="Name" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="username"
+                                        [value]="user.username" title="Username" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="email" [value]="user.email"
+                                        title="Email" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="phone" [value]="user.phone"
+                                        title="Phone" />
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm mx-1" title="Update" type="submit"
+                                        [disabled]="form.invalid">
+                                        <i class="bi bi-lightning"></i>
+                                    </button>
+
+                                    <button class="btn btn-danger btn-sm mx-1" title="Cancel Changes" type="button">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

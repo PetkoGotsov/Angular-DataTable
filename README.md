@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
+The project consists of several modules, including DataTablesModule and HttpClientModule declared in app.module.ts so they can be used globally across the application.  The components used are users and products components. Users, products and filtering services used for configuring the datasets from external APIs. The components' static declaration consists of *ng tags for displaying the data in tabular view using angular datatables and a form which is used for editing elements. The components' definitions make use of their own respective services to fetch data as well as initialize the DataTables.Settings including the table columns definitions. The ReactiveFormsModule is used for configuring inline updating of rows. The public APIs with data do not offer these capabilities, so a filtering service is used for filtering, sorting, paginating the data on the front-end.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

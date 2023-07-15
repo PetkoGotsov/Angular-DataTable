@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="update()">
+                <table datatable [dtOptions]="dtOptions" class="table table-bordered">
+                    <tbody>
+                        <ng-container *ngFor="let product of allProducts; let i = index">
+                            <tr *ngIf="productSelected != product" (click)="selectProduct(product)">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.title }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.description }}</td>
+                                <td>{{ product.category }}</td>
+                            </tr>
+
+                            <tr *ngIf="productSelected == product" class="table-primary">
+                                <td>{{ product.id }}</td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="title"
+                                        [value]="product.title" title="Title" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="price"
+                                        [value]="product.price" title="Price" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="description" 
+                                        [value]="product.description" title="Description" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" formControlName="category" [value]="product.category"
+                                        title="Category" />
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm mx-1" title="Update" type="submit"
+                                        [disabled]="form.invalid">
+                                        <i class="bi bi-lightning"></i>
+                                    </button>
+
+                                    <button class="btn btn-danger btn-sm mx-1" title="Cancel Changes" type="button">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
